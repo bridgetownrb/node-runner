@@ -18,6 +18,8 @@ Simply create a new `NodeRunner` object and pass in the Javascript code you wish
 execute:
 
 ```ruby
+require "node-runner"
+
 runner = NodeRunner.new(
   <<~NODE
     const hello = (response) => {
