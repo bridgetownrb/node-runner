@@ -2,7 +2,7 @@
 
 A simple way to execute Javascript in a Ruby context via Node. (Loosely based on the Node Runtime module from [ExecJS](https://github.com/rails/execjs).)
 
-[![Gem Version](https://badge.fury.io/rb/node-runner)](https://badge.fury.io/rb/node-runner)
+[![Gem Version](https://badge.fury.io/rb/node-runner.svg)](https://badge.fury.io/rb/node-runner)
 
 ## Installation
 
