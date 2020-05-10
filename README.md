@@ -2,7 +2,7 @@
 
 A simple way to execute Javascript in a Ruby context via Node. (Loosely based on the Node Runtime module from [ExecJS](https://github.com/rails/execjs).)
 
-[![Gem Version](https://badge.fury.io/rb/node-runner)](https://badge.fury.io/rb/node-runner)
+[![Gem Version](https://badge.fury.io/rb/node-runner.svg)](https://badge.fury.io/rb/node-runner)
 
 ## Installation
 
@@ -18,6 +18,8 @@ Simply create a new `NodeRunner` object and pass in the Javascript code you wish
 execute:
 
 ```ruby
+require "node-runner"
+
 runner = NodeRunner.new(
   <<~NODE
     const hello = (response) => {
@@ -72,6 +74,14 @@ NodeRunner.new "…", executor: NodeRunner::Executor.new(command: "/path/to/cust
 ```
 
 `command` can be an array as well, if you want to attempt multiple paths until one is found. Inspect the `node-runner.rb` source code for more information on the available options.
+
+## Caveats
+
+A single run of a script is quite fast, nearly as fast as running a script directly with the
+`node` CLI…because that's essentially what is happening here. However, the performance characteristics using
+this in a high-traffic request/response cycle (say, from a Rails app) is unknown. Likely the best context to use
+Node Runner would be via a background job, or during a build process like when using a static site generator.
+(Like our parent project [Bridgetown](https://github.com/bridgetownrb/bridgetown)!)
 
 ## Testing
 
