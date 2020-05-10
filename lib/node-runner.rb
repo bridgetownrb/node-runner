@@ -84,10 +84,11 @@ class NodeRunner::Executor
   attr_reader :name
 
   def initialize(options = {})
-    @command     = options[:command] || ['node']
-    @runner_path = options[:runner_path] || File.join(File.expand_path(__dir__), '/node_runner.js')
-    @encoding    = options[:encoding] || "UTF-8"
-    @binary      = nil
+    @command      = options[:command] || ['node']
+    @modules_path = options[:modules_path] || File.join(Dir.pwd, "node_modules")
+    @runner_path  = options[:runner_path] || File.join(File.expand_path(__dir__), '/node_runner.js')
+    @encoding     = options[:encoding] || "UTF-8"
+    @binary       = nil
 
     @popen_options = {}
     @popen_options[:external_encoding] = @encoding if @encoding
@@ -99,6 +100,7 @@ class NodeRunner::Executor
   end
 
   def exec(filename)
+    ENV["NODE_PATH"] = @modules_path
     stdout, stderr, status = Open3.capture3("#{binary} #{filename}")
     if status.success?
       stdout
