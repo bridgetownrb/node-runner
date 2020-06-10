@@ -10,11 +10,11 @@ create_builder builder_file do
         # access output in Liquid with {{ site.data.node_script.hello }}
         add_data "node_script" do
           runner = NodeRunner.new(
-            <<~NODE
+            <<~JAVASCRIPT
               const hello = (response) => {
                 return `Hello? ${response}`
               }
-            NODE
+            JAVASCRIPT
           )
           
           {
