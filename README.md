@@ -23,7 +23,7 @@ require "node-runner"
 runner = NodeRunner.new(
   <<~NODE
     const hello = (response) => {
-      return `Hello? ${response}!`
+      return `Hello? ${response}`
     }
   NODE
 )
