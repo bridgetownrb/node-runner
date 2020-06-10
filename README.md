@@ -27,11 +27,11 @@ execute:
 require "node-runner"
 
 runner = NodeRunner.new(
-  <<~NODE
+  <<~JAVASCRIPT
     const hello = (response) => {
       return `Hello? ${response}`
     }
-  NODE
+  JAVASCRIPT
 )
 ```
 
@@ -50,12 +50,12 @@ You can also use Node require statements in your Javascript:
 
 ```ruby
 runner = NodeRunner.new(
-  <<~NODE
+  <<~JAVASCRIPT
     const path = require("path")
     const extname = (filename) => {
       return path.extname(filename);
     }
-  NODE
+  JAVASCRIPT
 )
   
 extname = runner.extname("README.md")
