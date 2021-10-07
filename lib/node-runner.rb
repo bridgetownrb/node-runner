@@ -117,16 +117,20 @@ class NodeRunner::Executor
 
   def locate_executable(command)
     commands = Array(command)
+    exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+    exts << ''
 
     commands.find { |cmd|
       if File.executable? cmd
         cmd
       else
-        path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |p|
-          full_path = File.join(p, cmd)
-          File.executable?(full_path) && File.file?(full_path)
+        path = ENV['PATH'].split(File::PATH_SEPARATOR).flat_map { |p|
+          exts.map { |e| File.join(p, "#{cmd}#{e}") }
+        }.find { |p|
+          File.executable?(p) && File.file?(p)
         }
-        path && File.expand_path(cmd, path)
+
+        path && File.expand_path(path)
       end
     }
   end
