@@ -5,7 +5,7 @@ create_builder builder_file do
   <<~RUBY
     require "node-runner"
 
-    class NodeScriptBuilder < SiteBuilder
+    class Builders::NodeScriptBuilder < SiteBuilder
       def build
         # access output in Liquid with {{ site.data.node_script.hello }}
         add_data "node_script" do
