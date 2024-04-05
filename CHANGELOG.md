@@ -4,6 +4,10 @@
 
 ...
 
+## 1.2.0 / 2024-04-05
+
+- Add support for functions returning promises
+
 ## 1.1.0 / 2021-10-17
 
 - fix: windows support for extensions [#1](https://github.com/bridgetownrb/node-runner/pull/1) ([bglw](https://github.com/bglw))

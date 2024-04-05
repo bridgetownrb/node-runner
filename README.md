@@ -12,10 +12,10 @@ Run this command to add this plugin to your project's Gemfile:
 $ bundle add node-runner
 ```
 
-For [Bridgetown](https://www.bridgetownrb.com) websites (requires v0.15 or later), you can run an automation to install NodeRunner and set up a builder plugin for further customization.
+For [Bridgetown](https://www.bridgetownrb.com) websites, you can run an automation to install NodeRunner and set up a builder plugin for further customization.
 
 ```shell
-bundle exec bridgetown apply https://github.com/bridgetownrb/node-runner
+bin/bridgetown apply https://github.com/bridgetownrb/node-runner
 ```
 
 ## Usage
