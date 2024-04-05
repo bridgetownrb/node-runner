@@ -91,7 +91,7 @@ Node Runner would be via a background job, or during a build process like when u
 
 ## Testing
 
-* Run `bundle exec rake` to run the test suite.
+* Run `bin/rake` to run the test suite.
 
 ## Contributing
 
