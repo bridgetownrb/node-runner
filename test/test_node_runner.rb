@@ -74,4 +74,21 @@ class TestNodeRunner < Minitest::Test
 
     assert_equal ".md", results
   end
+
+  let(:runner_with_promises) do NodeRunner.new(
+      <<~NODE
+        const hello = (response) => {
+          return new Promise((resolve, reject) => {
+            resolve(`Hello? ${response}!`)
+          })
+        }
+      NODE
+    )
+  end
+
+  def test_that_promises_work
+    results = runner_with_promises.hello("Goodbye")
+
+    assert_equal "Hello? Goodbye!", results
+  end
 end
